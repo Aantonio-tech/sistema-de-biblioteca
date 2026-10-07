@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Biblioteca+ | Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="auth-box">
+
+            <!-- LOGO -->
+
+            <a href="index.html" class="logo">
+                BIBLIOTECA<span>+</span>
+            </a>
+
+
+            <!-- TÍTULO -->
+
+            <h1>
+                Entrar na conta
+            </h1>
+
+            <p class="muted">
+                Acesse sua conta da Biblioteca+.
+            </p>
+
+
+            <!-- LOGIN -->
+
+            <form id="loginForm">
+
+                <label for="loginEmail">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <label for="loginSenha">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="loginSenha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    autocomplete="current-password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn primary full"
+                >
+                    ENTRAR
+                </button>
+
+
+                <!-- MENSAGEM -->
+
+                <p
+                    id="loginMsg"
+                    class="message"
+                ></p>
+
+            </form>
+
+
+            <!-- CADASTRO -->
+
+            <div class="auth-bottom">
+
+                <span>
+                    Ainda não possui uma conta?
+                </span>
+
+                <br>
+
+                <a href="cadastro.html">
+                    Criar cadastro
+                </a>
+
+            </div>
+
+
+            <!-- VOLTAR -->
+
+            <a
+                href="index.html"
+                class="back"
+            >
+                ← Voltar para o início
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="javascript.js"></script>
+
+</body>
+
+</html>
