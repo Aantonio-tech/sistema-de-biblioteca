@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Biblioteca+ | Usuários</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+            <a
+                class="logo"
+                href="index.html"
+            >
+                BIBLIOTECA<span>+</span>
+            </a>
+
+
+            <button
+                class="menu-toggle"
+                type="button"
+            >
+                ☰
+            </button>
+
+
+            <nav>
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="livros.html">
+                    Livros
+                </a>
+
+                <a
+                    href="usuario.html"
+                    class="active"
+                >
+                    Usuários
+                </a>
+
+                <a href="emprestimos.html">
+                    Empréstimos
+                </a>
+
+                <a href="sobre.html">
+                    Sobre
+                </a>
+
+                <a href="contato.html">
+                    Contato
+                </a>
+
+                <a
+                    id="loginLink"
+                    class="nav-login"
+                    href="login.html"
+                >
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO -->
+
+    <main class="page">
+
+        <div class="container">
+
+
+            <!-- TÍTULO -->
+
+            <div class="page-head">
+
+                <div>
+
+                    <span class="eyebrow">
+                        BIBLIOTECA+
+                    </span>
+
+                    <h1>
+                        Usuários
+                    </h1>
+
+                    <p>
+                        Consulte os usuários cadastrados no sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PESQUISA -->
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="buscaUsuario"
+                    placeholder="Pesquisar por nome ou e-mail..."
+                >
+
+            </div>
+
+
+            <!-- LISTA DE USUÁRIOS -->
+
+            <div
+                id="usuariosLista"
+                class="table-wrap"
+            >
+
+                <!-- O JavaScript coloca os usuários aqui -->
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <div class="container">
+
+            Biblioteca+ — Projeto A.D.S. • HTML, CSS e JavaScript
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="javascript.js"></script>
+
+</body>
+
+</html>
