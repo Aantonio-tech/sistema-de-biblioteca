@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Biblioteca+ | Login</title>
+    <title>Biblioteca+ | Criar Cadastro</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -32,25 +32,44 @@
             <!-- TÍTULO -->
 
             <h1>
-                Entrar na conta
+                Criar cadastro
             </h1>
 
             <p class="muted">
-                Acesse sua conta da Biblioteca+.
+                Crie sua conta para acessar a Biblioteca+.
             </p>
 
 
-            <!-- LOGIN -->
+            <!-- FORMULÁRIO -->
 
-            <form id="loginForm">
+            <form id="cadastroForm">
 
-                <label for="loginEmail">
+
+                <!-- NOME -->
+
+                <label for="cadNome">
+                    Nome completo
+                </label>
+
+                <input
+                    type="text"
+                    id="cadNome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <!-- E-MAIL -->
+
+                <label for="cadEmail">
                     E-mail
                 </label>
 
                 <input
                     type="email"
-                    id="loginEmail"
+                    id="cadEmail"
                     name="email"
                     placeholder="Digite seu e-mail"
                     autocomplete="email"
@@ -58,50 +77,68 @@
                 >
 
 
-                <label for="loginSenha">
+                <!-- TELEFONE -->
+
+                <label for="cadTelefone">
+                    Telefone
+                </label>
+
+                <input
+                    type="tel"
+                    id="cadTelefone"
+                    name="telefone"
+                    placeholder="(11) 99999-9999"
+                    autocomplete="tel"
+                    required
+                >
+
+
+                <!-- SENHA -->
+
+                <label for="cadSenha">
                     Senha
                 </label>
 
                 <input
                     type="password"
-                    id="loginSenha"
+                    id="cadSenha"
                     name="senha"
-                    placeholder="Digite sua senha"
-                    autocomplete="current-password"
+                    placeholder="Crie uma senha"
+                    autocomplete="new-password"
                     required
                 >
 
+
+                <!-- BOTÃO -->
 
                 <button
                     type="submit"
                     class="btn primary full"
                 >
-                    ENTRAR
+                    CRIAR CADASTRO
                 </button>
 
 
                 <!-- MENSAGEM -->
 
                 <p
-                    id="loginMsg"
+                    id="cadMsg"
                     class="message"
                 ></p>
 
             </form>
 
 
-            <!-- CADASTRO -->
+            <!-- LOGIN -->
 
             <div class="auth-bottom">
 
-                <span>
-                    Ainda não possui uma conta?
-                </span>
+                Já possui uma conta?
 
                 <br>
 
-                <a href="cadastro.html">
-                    Criar cadastro
+                <a href="login.html">
+                    Fazer login
                 </a>
 
             </div>
@@ -128,6 +165,3 @@
 </body>
 
 </html>
-<a href="cadastro.html">
-    Criar cadastro
-</a>
