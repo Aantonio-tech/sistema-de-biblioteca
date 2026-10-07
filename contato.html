@@ -1,215 +1,258 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Biblioteca</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Biblioteca+ | Contato</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f1ea;
-            color: #333;
-        }
-
-        header {
-            background-color: #4b2e1f;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        header h1 {
-            margin-bottom: 10px;
-        }
-
-        nav {
-            background-color: #6b4226;
-            text-align: center;
-            padding: 12px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .contato {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .card h2 {
-            color: #4b2e1f;
-            margin-bottom: 20px;
-        }
-
-        .informacao {
-            margin-bottom: 18px;
-        }
-
-        .informacao strong {
-            display: block;
-            margin-bottom: 5px;
-            color: #6b4226;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-        }
-
-        textarea {
-            height: 130px;
-            resize: vertical;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #6b4226;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #4b2e1f;
-        }
-
-        footer {
-            margin-top: 40px;
-            background-color: #4b2e1f;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        @media (max-width: 700px) {
-            .contato {
-                grid-template-columns: 1fr;
-            }
-
-            nav a {
-                display: block;
-                margin: 8px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Biblioteca Municipal</h1>
-        <p>Conhecimento, cultura e leitura para todos</p>
-    </header>
+    <!-- CABEÇALHO -->
+    <header class="header">
 
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="acervo.html">Acervo</a>
-        <a href="eventos.html">Eventos</a>
-        <a href="contato.html">Contato</a>
-    </nav>
+        <div class="container nav">
 
-    <main>
-        <div class="contato">
+            <a class="logo" href="index.html">
+                BIBLIOTECA<span>+</span>
+            </a>
 
-            <section class="card">
-                <h2>Entre em contato</h2>
+            <button class="menu-toggle" type="button">
+                ☰
+            </button>
 
-                <div class="informacao">
-                    <strong>📍 Endereço</strong>
-                    Av zelia - 126
-                </div>
+            <nav>
 
-                <div class="informacao">
-                    <strong>📞 Telefone</strong>
-                    (11) 92044-3885
-                </div>
+                <a href="index.html">
+                    Início
+                </a>
 
-                <div class="informacao">
-                    <strong>✉️ E-mail</strong>
-                    wendel7121@icloud.com
-                </div>
+                <a href="livros.html">
+                    Livros
+                </a>
 
-                <div class="informacao">
-                    <strong>🕐 Horário de funcionamento</strong>
-                    Segunda a sexta: 8h às 18h<br>
-                    Sábado: 9h às 13h
-                </div>
-            </section>
+                <a href="usuarios.html">
+                    Usuários
+                </a>
 
-            <section class="card">
-                <h2>Envie uma mensagem</h2>
+                <a href="emprestimos.html">
+                    Empréstimos
+                </a>
 
-                <form action="#" method="post">
+                <a href="sobre.html">
+                    Sobre
+                </a>
 
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome"
-                           placeholder="Digite seu nome" required>
+                <a class="active" href="contato.html">
+                    Contato
+                </a>
 
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email"
-                           placeholder="Digite seu e-mail" required>
+                <a
+                    id="loginLink"
+                    class="nav-login"
+                    href="login.html"
+                >
+                    Login
+                </a>
 
-                    <label for="assunto">Assunto</label>
-                    <input type="text" id="assunto" name="assunto"
-                           placeholder="Assunto da mensagem" required>
-
-                    <label for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" name="mensagem"
-                              placeholder="Digite sua mensagem..." required></textarea>
-
-                    <button type="submit">Enviar mensagem</button>
-
-                </form>
-            </section>
+            </nav>
 
         </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- TÍTULO -->
+        <section class="hero">
+
+            <div class="container">
+
+                <span class="badge">
+                    FALE CONOSCO
+                </span>
+
+                <h1>
+                    Entre em <strong>contato.</strong>
+                </h1>
+
+                <p>
+                    Tem alguma dúvida, sugestão ou precisa de ajuda?
+                    Envie uma mensagem para a equipe da Biblioteca+.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTATO -->
+        <section class="container section">
+
+            <div class="cards">
+
+                <!-- INFORMAÇÕES -->
+                <article class="card">
+
+                    <span class="icon">
+                        📚
+                    </span>
+
+                    <h2>
+                        Fale com a Biblioteca+
+                    </h2>
+
+                    <p>
+                        Estamos disponíveis para ajudar você
+                        com dúvidas sobre livros, usuários,
+                        empréstimos e utilização do sistema.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <strong>📍 Endereço</strong><br>
+                        Rua das Bibliotecas, 123<br>
+                        Centro — São Paulo/SP
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <strong>📞 Telefone</strong><br>
+                        (11) 92044-3885
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <strong>✉️ E-mail</strong><br>
+                        contato@biblioteca.com.br
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <strong>🕐 Horário</strong><br>
+                        Segunda a sexta: 08h às 18h<br>
+                        Sábado: 09h às 13h
+                    </p>
+
+                </article>
+
+
+                <!-- FORMULÁRIO -->
+                <article class="card">
+
+                    <span class="icon">
+                        ✉️
+                    </span>
+
+                    <h2>
+                        Envie uma mensagem
+                    </h2>
+
+                    <p>
+                        Preencha o formulário abaixo e
+                        entraremos em contato.
+                    </p>
+
+                    <br>
+
+                    <form action="#" method="post">
+
+                        <label for="nome">
+                            Nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite seu nome"
+                            required
+                        >
+
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            required
+                        >
+
+
+                        <label for="assunto">
+                            Assunto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="assunto"
+                            name="assunto"
+                            placeholder="Digite o assunto"
+                            required
+                        >
+
+
+                        <label for="mensagem">
+                            Mensagem
+                        </label>
+
+                        <textarea
+                            id="mensagem"
+                            name="mensagem"
+                            placeholder="Digite sua mensagem..."
+                            rows="6"
+                            required
+                        ></textarea>
+
+
+                        <button
+                            type="submit"
+                            class="btn primary"
+                        >
+                            Enviar mensagem
+                        </button>
+
+                    </form>
+
+                </article>
+
+            </div>
+
+        </section>
+
     </main>
 
+
+    <!-- RODAPÉ -->
     <footer>
-        <p>&copy; 2026 Biblioteca Municipal - Todos os direitos reservados.</p>
+
+        <div class="container">
+
+            Biblioteca+ — Projeto A.D.S.
+            • HTML, CSS e JavaScript
+
+        </div>
+
     </footer>
 
+
+    <!-- JAVASCRIPT -->
+    <script src="../JS/script.js"></script>
+
 </body>
+
 </html>
