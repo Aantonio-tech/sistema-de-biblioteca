@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biblioteca+ | Empréstimos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container nav">
+
+        <a class="logo" href="index.html">
+            BIBLIOTECA<span>+</span>
+        </a>
+
+        <button class="menu-toggle">☰</button>
+
+        <nav>
+
+            <a href="index.html">Início</a>
+
+            <a href="livros.html">Livros</a>
+
+            <a href="usuario.html">Usuários</a>
+
+            <a href="emprestimos.html" class="active">
+                Empréstimos
+            </a>
+
+            <a href="sobre.html">Sobre</a>
+
+            <a href="contato.html">Contato</a>
+
+            <a id="loginLink" class="nav-login" href="login.html">
+                Login
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="page">
+
+    <div class="container">
+
+        <div class="page-head">
+
+            <div>
+
+                <span class="eyebrow">
+                    BIBLIOTECA+
+                </span>
+
+                <h1>Empréstimos</h1>
+
+                <p>
+                    Registre e acompanhe os empréstimos de livros.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+
+        <div class="panel">
+
+            <h2>Novo empréstimo</h2>
+
+            <form id="emprestimoForm">
+
+                <div class="form-grid">
+
+                    <label>
+                        Usuário
+
+                        <select id="empUsuario" required>
+                        </select>
+
+                    </label>
+
+
+                    <label>
+                        Livro
+
+                        <select id="empLivro" required>
+                        </select>
+
+                    </label>
+
+
+                    <label>
+
+                        Data do empréstimo
+
+                        <input
+                            type="date"
+                            id="empData"
+                            required
+                        >
+
+                    </label>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn primary"
+                        >
+                            Registrar empréstimo
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <p
+                id="empMsg"
+                class="message"
+            ></p>
+
+        </div>
+
+
+        <!-- LISTA -->
+
+        <div class="section">
+
+            <div class="section-title">
+
+                <span>
+                    REGISTROS
+                </span>
+
+                <h2>
+                    Empréstimos realizados
+                </h2>
+
+            </div>
+
+
+            <div id="emprestimosLista">
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+
+        Biblioteca+ — Projeto A.D.S. • HTML, CSS e JavaScript
+
+    </div>
+
+</footer>
+
+
+<script src="javascript.js"></script>
+
+</body>
+
+</html>
