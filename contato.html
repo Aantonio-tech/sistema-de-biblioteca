@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Biblioteca</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f1ea;
+            color: #333;
+        }
+
+        header {
+            background-color: #4b2e1f;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #6b4226;
+            text-align: center;
+            padding: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .contato {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #4b2e1f;
+            margin-bottom: 20px;
+        }
+
+        .informacao {
+            margin-bottom: 18px;
+        }
+
+        .informacao strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #6b4226;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6b4226;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4b2e1f;
+        }
+
+        footer {
+            margin-top: 40px;
+            background-color: #4b2e1f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .contato {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Biblioteca Municipal</h1>
+        <p>Conhecimento, cultura e leitura para todos</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="acervo.html">Acervo</a>
+        <a href="eventos.html">Eventos</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+
+    <main>
+        <div class="contato">
+
+            <section class="card">
+                <h2>Entre em contato</h2>
+
+                <div class="informacao">
+                    <strong>📍 Endereço</strong>
+                    Rua das Letras, 123 — Centro
+                </div>
+
+                <div class="informacao">
+                    <strong>📞 Telefone</strong>
+                    (11) 1234-5678
+                </div>
+
+                <div class="informacao">
+                    <strong>✉️ E-mail</strong>
+                    contato@biblioteca.com.br
+                </div>
+
+                <div class="informacao">
+                    <strong>🕐 Horário de funcionamento</strong>
+                    Segunda a sexta: 8h às 18h<br>
+                    Sábado: 9h às 13h
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Envie uma mensagem</h2>
+
+                <form action="#" method="post">
+
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome"
+                           placeholder="Digite seu nome" required>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Digite seu e-mail" required>
+
+                    <label for="assunto">Assunto</label>
+                    <input type="text" id="assunto" name="assunto"
+                           placeholder="Assunto da mensagem" required>
+
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem"
+                              placeholder="Digite sua mensagem..." required></textarea>
+
+                    <button type="submit">Enviar mensagem</button>
+
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Biblioteca Municipal - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

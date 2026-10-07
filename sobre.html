@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sobre - Minha Biblioteca</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container nav">
+
+            <a href="index.html" class="logo">
+                Minha<span>Biblioteca</span>
+            </a>
+
+            <button class="menu-toggle" onclick="document.querySelector('.nav').classList.toggle('menu-open')">
+                ☰
+            </button>
+
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="livros.html">Livros</a>
+                <a href="sobre.html" class="active">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="login.html" class="nav-login">Entrar</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- CONTEÚDO -->
+    <main class="page">
+
+        <div class="container">
+
+            <section class="about-hero">
+
+                <span class="eyebrow">SOBRE O PROJETO</span>
+
+                <h1>
+                    Uma biblioteca feita para
+                    <strong style="color: var(--primary);">
+                        quem ama ler.
+                    </strong>
+                </h1>
+
+                <p>
+                    A Minha Biblioteca é um projeto criado para facilitar
+                    a organização, pesquisa e descoberta de livros em um
+                    único lugar.
+                </p>
+
+            </section>
+
+
+            <!-- CARDS -->
+            <section class="cards three">
+
+                <div class="card">
+                    <div class="icon">📚</div>
+
+                    <h2>Organização</h2>
+
+                    <p>
+                        Encontre seus livros de forma simples e organizada,
+                        mantendo todas as informações importantes em um só lugar.
+                    </p>
+                </div>
+
+
+                <div class="card">
+                    <div class="icon">🔎</div>
+
+                    <h2>Descoberta</h2>
+
+                    <p>
+                        Explore diferentes títulos, autores e gêneros para
+                        encontrar sua próxima leitura.
+                    </p>
+                </div>
+
+
+                <div class="card">
+                    <div class="icon">✨</div>
+
+                    <h2>Experiência</h2>
+
+                    <p>
+                        Uma interface moderna, rápida e agradável para tornar
+                        sua experiência com livros ainda melhor.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- NOSSA MISSÃO -->
+            <section class="section">
+
+                <div class="section-title">
+                    <span>NOSSA MISSÃO</span>
+                    <h2>Por que criamos este projeto?</h2>
+                </div>
+
+                <div class="panel">
+
+                    <p>
+                        Acreditamos que encontrar e organizar livros não
+                        precisa ser complicado. Por isso, criamos uma
+                        plataforma simples e intuitiva para ajudar leitores
+                        a manter sua biblioteca organizada.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Nosso objetivo é proporcionar uma experiência
+                        agradável para quem gosta de descobrir novas histórias,
+                        acompanhar seus livros e ter tudo organizado em um
+                        único ambiente.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- TECNOLOGIAS -->
+            <section class="section">
+
+                <div class="section-title">
+                    <span>TECNOLOGIA</span>
+                    <h2>Construído com simplicidade</h2>
+                </div>
+
+                <div class="cards three">
+
+                    <div class="card">
+                        <h3>HTML</h3>
+                        <p>
+                            Estrutura das páginas e organização do conteúdo.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>CSS</h3>
+                        <p>
+                            Design moderno, responsivo e adaptado para
+                            diferentes tamanhos de tela.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>JavaScript</h3>
+                        <p>
+                            Interações e funcionalidades para deixar a
+                            biblioteca mais dinâmica.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            © 2026 Minha Biblioteca. Todos os direitos reservados.
+        </div>
+    </footer>
+
+
+    <script>
+        const menuButton = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".nav");
+
+        menuButton.addEventListener("click", () => {
+            nav.classList.toggle("menu-open");
+        });
+    </script>
+
+</body>
+
+</html>
