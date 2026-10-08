@@ -1,42 +1,1727 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livros - Biblioteca</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Livros - Minha Biblioteca</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #090b0f;
+            --panel: #11151b;
+            --text: #f5f7fa;
+            --muted: #9aa4b2;
+            --primary: #6ee7b7;
+            --primary-dark: #34d399;
+            --line: #28303a;
+            --danger: #fb7185;
+
+            --shadow: 0 18px 50px rgba(0, 0, 0, 0.30);
+            --radius: 22px;
+            --container: 1160px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(110, 231, 183, 0.10),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(52, 211, 153, 0.08),
+                    transparent 28%
+                ),
+                #090b0f;
+
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(100% - 2rem, var(--container));
+            margin-inline: auto;
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+
+            backdrop-filter: blur(16px);
+
+            background: rgba(9, 11, 15, 0.93);
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav {
+            min-height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 1rem;
+
+            position: relative;
+        }
+
+        .logo {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+
+            font-weight: 700;
+
+            letter-spacing: -0.03em;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+
+            font-weight: 500;
+
+            position: relative;
+
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 100%;
+            height: 2px;
+
+            background: var(--primary);
+
+            border-radius: 999px;
+        }
+
+        .nav-login {
+            padding: 0.8rem 1.15rem;
+
+            background: var(--primary);
+
+            color: #07110d !important;
+
+            border-radius: 999px;
+
+            font-weight: 700 !important;
+        }
+
+        .nav-login:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .menu-toggle {
+            display: none;
+
+            border: 1px solid var(--line);
+
+            background: var(--panel);
+
+            color: var(--text);
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 14px;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page {
+            padding: 3.5rem 0 5rem;
+        }
+
+        /* ================= HERO ================= */
+
+        .books-hero {
+            display: grid;
+
+            grid-template-columns: 1.15fr 0.85fr;
+
+            gap: 2rem;
+
+            align-items: center;
+
+            padding: 2rem 0 3rem;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            margin-bottom: 1rem;
+
+            color: var(--primary);
+
+            font-size: 0.82rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.18em;
+        }
+
+        .books-hero h1 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(2.9rem, 7vw, 5.2rem);
+
+            line-height: 0.95;
+
+            letter-spacing: -0.04em;
+
+            max-width: 10ch;
+
+            margin-bottom: 1.2rem;
+        }
+
+        .books-hero p {
+            max-width: 58ch;
+
+            color: var(--muted);
+
+            font-size: 1.05rem;
+
+            margin-bottom: 1.6rem;
+        }
+
+        .hero-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 0.9rem;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 0.55rem;
+
+            min-height: 48px;
+
+            padding: 0 1.2rem;
+
+            border-radius: 999px;
+
+            border: 1px solid transparent;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+
+            color: #07110d;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 14px 28px rgba(52, 211, 153, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #171c23;
+
+            border-color: var(--line);
+
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+
+            box-shadow: var(--shadow);
+        }
+
+        /* ================= HERO VISUAL ================= */
+
+        .hero-visual {
+            min-height: 420px;
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(110, 231, 183, 0.15),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    145deg,
+                    #11151b,
+                    #0d1116
+                );
+
+            border: 1px solid var(--line);
+
+            box-shadow: var(--shadow);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            right: -70px;
+            top: -70px;
+
+            border-radius: 50%;
+
+            background: rgba(110, 231, 183, 0.12);
+
+            filter: blur(10px);
+        }
+
+        .hero-visual::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            left: -60px;
+            bottom: -70px;
+
+            border-radius: 50%;
+
+            background: rgba(52, 211, 153, 0.08);
+
+            filter: blur(10px);
+        }
+
+        .book-stack {
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .book {
+            position: absolute;
+
+            width: 120px;
+            height: 280px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 25px 35px rgba(0, 0, 0, 0.35);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .book.one {
+            background:
+                linear-gradient(
+                    180deg,
+                    #064e3b,
+                    #10b981
+                );
+
+            transform:
+                rotate(-14deg)
+                translateX(-90px)
+                translateY(10px);
+        }
+
+        .book.two {
+            background:
+                linear-gradient(
+                    180deg,
+                    #17212b,
+                    #334155
+                );
+
+            transform: rotate(-3deg);
+
+            z-index: 2;
+        }
+
+        .book.three {
+            background:
+                linear-gradient(
+                    180deg,
+                    #065f46,
+                    #064e3b
+                );
+
+            transform:
+                rotate(13deg)
+                translateX(92px)
+                translateY(12px);
+        }
+
+        .book::before {
+            content: "";
+
+            position: absolute;
+
+            left: 12px;
+            top: 18px;
+
+            width: 10px;
+            height: calc(100% - 36px);
+
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .book::after {
+            content: "";
+
+            position: absolute;
+
+            left: 30px;
+            right: 20px;
+
+            top: 42px;
+
+            height: 2px;
+
+            background: rgba(255, 255, 255, 0.24);
+
+            box-shadow:
+                0 34px 0 rgba(255, 255, 255, 0.18),
+                0 68px 0 rgba(255, 255, 255, 0.14);
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding-top: 1.6rem;
+        }
+
+        .section-title {
+            margin-bottom: 1.4rem;
+        }
+
+        .section-title > span {
+            color: var(--primary);
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+            letter-spacing: 0.16em;
+        }
+
+        .section-title h2 {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: clamp(2rem, 4vw, 3rem);
+
+            margin-top: 0.35rem;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--muted);
+
+            max-width: 700px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .panel {
+            background: var(--panel);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 1.2rem;
+
+            box-shadow: var(--shadow);
+        }
+
+        .search-grid {
+            display: grid;
+
+            grid-template-columns:
+                2fr
+                1fr
+                1fr
+                auto;
+
+            gap: 0.9rem;
+
+            align-items: end;
+        }
+
+        .field {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0.35rem;
+        }
+
+        .field label {
+            font-size: 0.84rem;
+
+            color: var(--muted);
+
+            font-weight: 600;
+        }
+
+        .field input,
+        .field select {
+            height: 50px;
+
+            border-radius: 14px;
+
+            border: 1px solid var(--line);
+
+            padding: 0 1rem;
+
+            background: #0b0e12;
+
+            color: var(--text);
+
+            outline: none;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: var(--primary);
+
+            box-shadow:
+                0 0 0 3px rgba(110, 231, 183, 0.10);
+        }
+
+        /* ================= BOOKS ================= */
+
+        .books-list {
+            display: grid;
+
+            gap: 1rem;
+        }
+
+        .book-item {
+            display: grid;
+
+            grid-template-columns:
+                90px
+                1.7fr
+                1fr
+                1fr
+                auto;
+
+            gap: 1.2rem;
+
+            align-items: center;
+
+            padding: 1rem;
+
+            background: var(--panel);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .book-item:hover {
+            transform: translateY(-3px);
+
+            border-color: rgba(110, 231, 183, 0.35);
+        }
+
+        .book-cover {
+            width: 90px;
+            height: 125px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 15px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .cover-1 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #065f46,
+                    #10b981
+                );
+        }
+
+        .cover-2 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #1e293b,
+                    #475569
+                );
+        }
+
+        .cover-3 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #064e3b,
+                    #047857
+                );
+        }
+
+        .cover-4 {
+            background:
+                linear-gradient(
+                    145deg,
+                    #172554,
+                    #0f766e
+                );
+        }
+
+        .book-meta h3 {
+            font-size: 1.25rem;
+
+            margin-bottom: 0.35rem;
+        }
+
+        .book-meta p {
+            color: var(--muted);
+
+            font-size: 0.92rem;
+        }
+
+        .meta-block {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0.15rem;
+        }
+
+        .meta-block strong {
+            color: var(--primary);
+
+            font-size: 0.72rem;
+
+            letter-spacing: 0.12em;
+        }
+
+        .meta-block span {
+            color: var(--text);
+
+            font-size: 0.9rem;
+        }
+
+        .status {
+            display: inline-block;
+
+            width: fit-content;
+
+            margin-top: 0.25rem;
+
+            padding: 0.2rem 0.55rem;
+
+            border-radius: 999px;
+
+            font-size: 0.72rem;
+
+            font-weight: 700;
+        }
+
+        .status.available {
+            background: rgba(110, 231, 183, 0.13);
+
+            color: var(--primary);
+        }
+
+        .status.borrowed {
+            background: rgba(251, 113, 133, 0.12);
+
+            color: var(--danger);
+        }
+
+        .book-actions {
+            display: flex;
+
+            gap: 0.5rem;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+        }
+
+        .book-actions .btn {
+            min-height: 42px;
+
+            padding: 0 0.9rem;
+
+            font-size: 0.85rem;
+        }
+
+        /* ================= DESTAQUES ================= */
+
+        .featured-panel {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 1rem;
+
+            margin-top: 1rem;
+        }
+
+        .featured-note {
+            background: var(--panel);
+
+            border: 1px solid var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 1.5rem;
+
+            box-shadow: var(--shadow);
+        }
+
+        .featured-note h3 {
+            margin-bottom: 0.5rem;
+
+            color: var(--primary);
+        }
+
+        .featured-note p {
+            color: var(--muted);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid var(--line);
+
+            padding: 2rem 0;
+
+            color: var(--muted);
+
+            text-align: center;
+
+            background: #080a0d;
+        }
+
+        /* ================= ANIMATION ================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(20px);
+
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 950px) {
+
+            .books-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                min-height: 350px;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .book-item {
+                grid-template-columns:
+                    80px
+                    1fr
+                    1fr;
+            }
+
+            .book-actions {
+                grid-column: 1 / -1;
+
+                justify-content: flex-start;
+            }
+
+            .book-meta {
+                grid-column: span 2;
+            }
+
+            .meta-block {
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+
+                top: 82px;
+
+                left: 0;
+                right: 0;
+
+                padding: 1rem;
+
+                background: var(--panel);
+
+                border: 1px solid var(--line);
+
+                border-radius: 0 0 18px 18px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .nav-links.menu-open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.7rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .book-item {
+                grid-template-columns: 75px 1fr;
+            }
+
+            .book-meta {
+                grid-column: auto;
+            }
+
+            .meta-block {
+                grid-column: 1 / -1;
+            }
+
+            .book-actions {
+                grid-column: 1 / -1;
+            }
+
+            .book-cover {
+                width: 75px;
+                height: 105px;
+            }
+
+            .books-hero h1 {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .page {
+                padding-top: 2rem;
+            }
+
+            .hero-visual {
+                min-height: 300px;
+            }
+
+            .book {
+                width: 85px;
+                height: 210px;
+            }
+
+            .book.one {
+                transform:
+                    rotate(-14deg)
+                    translateX(-65px);
+            }
+
+            .book.three {
+                transform:
+                    rotate(13deg)
+                    translateX(65px);
+            }
+
+            .book-actions {
+                flex-direction: column;
+            }
+
+            .book-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <header>
-    <h1>Biblioteca Virtual</h1>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="livros.html">Livros</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-  </header>
 
-  <main>
-    <section>
-      <h2>Catálogo de Livros</h2>
-      <p>Confira os livros disponíveis na biblioteca.</p>
-      <input type="text" placeholder="Buscar livro...">
-    </section>
+    <!-- ================= HEADER ================= -->
 
-    <section>
-      <article>
-        <h3>Dom Casmurro</h3>
-        <p>Autor: Machado de Assis</p>
-        <p>Gênero: Clássico</p>
-        <button>Ver detalhes</button>
-      </article>
+    <header class="header">
 
-      <article>
-        <h3>Clean Code</h3>
-        <p>Autor: Robert C. Martin</p>
-        <p>Gênero: Programação</p>
-        <button>Ver detalhes</button>
-      </article>
-    </section>
-  </main>
+        <div class="container">
+
+            <div class="nav">
+
+                <a href="#" class="logo">
+                    Minha <span>Biblioteca</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle">
+                    ☰
+                </button>
+
+                <nav class="nav-links" id="navLinks">
+
+                    <a href="#inicio" class="active">
+                        Início
+                    </a>
+
+                    <a href="#catalogo">
+                        Catálogo
+                    </a>
+
+                    <a href="#destaques">
+                        Destaques
+                    </a>
+
+                    <a href="sobre.html">
+                        Sobre
+                    </a>
+
+                    <a href="#" class="nav-login">
+                        Entrar
+                    </a>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="page">
+
+        <div class="container">
+
+            <!-- HERO -->
+
+            <section class="books-hero" id="inicio">
+
+                <div>
+
+                    <span class="eyebrow">
+                        BIBLIOTECA DIGITAL
+                    </span>
+
+                    <h1>
+                        Encontre sua próxima leitura.
+                    </h1>
+
+                    <p>
+                        Explore livros, autores e diferentes gêneros
+                        em um catálogo organizado para facilitar
+                        sua busca e deixar sua experiência de leitura
+                        mais simples.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="#catalogo"
+                            class="btn btn-primary"
+                        >
+                            Explorar livros
+                        </a>
+
+                        <a
+                            href="#destaques"
+                            class="btn btn-secondary"
+                        >
+                            Ver destaques
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="book-stack">
+
+                        <div class="book one"></div>
+
+                        <div class="book two"></div>
+
+                        <div class="book three"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- BUSCA -->
+
+            <section class="section">
+
+                <div class="panel">
+
+                    <div class="search-grid">
+
+                        <div class="field">
+
+                            <label for="busca">
+                                Buscar livro ou autor
+                            </label>
+
+                            <input
+                                type="text"
+                                id="busca"
+                                placeholder="Digite o nome do livro ou autor..."
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="genero">
+                                Gênero
+                            </label>
+
+                            <select id="genero">
+
+                                <option value="">
+                                    Todos
+                                </option>
+
+                                <option value="Clássico">
+                                    Clássico
+                                </option>
+
+                                <option value="Programação">
+                                    Programação
+                                </option>
+
+                                <option value="Fantasia">
+                                    Fantasia
+                                </option>
+
+                                <option value="Romance">
+                                    Romance
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="status">
+                                Status
+                            </label>
+
+                            <select id="status">
+
+                                <option value="">
+                                    Todos
+                                </option>
+
+                                <option value="Disponível">
+                                    Disponível
+                                </option>
+
+                                <option value="Emprestado">
+                                    Emprestado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                            class="btn btn-primary"
+                            type="button"
+                            id="limparFiltros"
+                        >
+                            Limpar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CATÁLOGO -->
+
+            <section class="section" id="catalogo">
+
+                <div class="section-title reveal">
+
+                    <span>
+                        LIVROS
+                    </span>
+
+                    <h2>
+                        Seu catálogo em destaque
+                    </h2>
+
+                    <p>
+                        Uma seleção organizada para facilitar
+                        a descoberta de títulos, autores e áreas
+                        de interesse.
+                    </p>
+
+                </div>
+
+
+                <div class="books-list">
+
+                    <!-- LIVRO 1 -->
+
+                    <article
+                        class="book-item reveal"
+                        data-title="Dom Casmurro"
+                        data-author="Machado de Assis"
+                        data-genre="Clássico"
+                        data-status="Disponível"
+                    >
+
+                        <div class="book-cover cover-1"></div>
+
+                        <div class="book-meta">
+
+                            <h3>
+                                Dom Casmurro
+                            </h3>
+
+                            <p>
+                                Um dos clássicos mais importantes
+                                da literatura brasileira, marcado
+                                por memória, ciúme e interpretação.
+                            </p>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                AUTOR
+                            </strong>
+
+                            <span>
+                                Machado de Assis
+                            </span>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                GÊNERO / STATUS
+                            </strong>
+
+                            <span>
+                                Clássico
+                            </span>
+
+                            <small class="status available">
+                                Disponível
+                            </small>
+
+                        </div>
+
+                        <div class="book-actions">
+
+                            <button class="btn btn-secondary">
+                                Detalhes
+                            </button>
+
+                            <button class="btn btn-primary">
+                                Reservar
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- LIVRO 2 -->
+
+                    <article
+                        class="book-item reveal"
+                        data-title="Clean Code"
+                        data-author="Robert C. Martin"
+                        data-genre="Programação"
+                        data-status="Disponível"
+                    >
+
+                        <div class="book-cover cover-2"></div>
+
+                        <div class="book-meta">
+
+                            <h3>
+                                Clean Code
+                            </h3>
+
+                            <p>
+                                Referência essencial para quem deseja
+                                escrever códigos mais limpos, legíveis
+                                e fáceis de manter.
+                            </p>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                AUTOR
+                            </strong>
+
+                            <span>
+                                Robert C. Martin
+                            </span>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                GÊNERO / STATUS
+                            </strong>
+
+                            <span>
+                                Programação
+                            </span>
+
+                            <small class="status available">
+                                Disponível
+                            </small>
+
+                        </div>
+
+                        <div class="book-actions">
+
+                            <button class="btn btn-secondary">
+                                Detalhes
+                            </button>
+
+                            <button class="btn btn-primary">
+                                Reservar
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- LIVRO 3 -->
+
+                    <article
+                        class="book-item reveal"
+                        data-title="O Hobbit"
+                        data-author="J.R.R. Tolkien"
+                        data-genre="Fantasia"
+                        data-status="Emprestado"
+                    >
+
+                        <div class="book-cover cover-3"></div>
+
+                        <div class="book-meta">
+
+                            <h3>
+                                O Hobbit
+                            </h3>
+
+                            <p>
+                                Uma aventura envolvente que apresenta
+                                um universo fantástico cheio de jornadas,
+                                criaturas e coragem.
+                            </p>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                AUTOR
+                            </strong>
+
+                            <span>
+                                J.R.R. Tolkien
+                            </span>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                GÊNERO / STATUS
+                            </strong>
+
+                            <span>
+                                Fantasia
+                            </span>
+
+                            <small class="status borrowed">
+                                Emprestado
+                            </small>
+
+                        </div>
+
+                        <div class="book-actions">
+
+                            <button class="btn btn-secondary">
+                                Detalhes
+                            </button>
+
+                            <button class="btn btn-primary">
+                                Avisar-me
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- LIVRO 4 -->
+
+                    <article
+                        class="book-item reveal"
+                        data-title="Orgulho e Preconceito"
+                        data-author="Jane Austen"
+                        data-genre="Romance"
+                        data-status="Disponível"
+                    >
+
+                        <div class="book-cover cover-4"></div>
+
+                        <div class="book-meta">
+
+                            <h3>
+                                Orgulho e Preconceito
+                            </h3>
+
+                            <p>
+                                Um romance clássico sobre relações,
+                                comportamento social e sentimentos
+                                que atravessam gerações.
+                            </p>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                AUTOR
+                            </strong>
+
+                            <span>
+                                Jane Austen
+                            </span>
+
+                        </div>
+
+                        <div class="meta-block">
+
+                            <strong>
+                                GÊNERO / STATUS
+                            </strong>
+
+                            <span>
+                                Romance
+                            </span>
+
+                            <small class="status available">
+                                Disponível
+                            </small>
+
+                        </div>
+
+                        <div class="book-actions">
+
+                            <button class="btn btn-secondary">
+                                Detalhes
+                            </button>
+
+                            <button class="btn btn-primary">
+                                Reservar
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- DESTAQUES -->
+
+            <section class="section" id="destaques">
+
+                <div class="section-title reveal">
+
+                    <span>
+                        DESTAQUES
+                    </span>
+
+                    <h2>
+                        Mais procurados da semana
+                    </h2>
+
+                </div>
+
+
+                <div class="featured-panel">
+
+                    <div class="featured-note reveal">
+
+                        <h3>
+                            Clássicos que nunca saem de cena
+                        </h3>
+
+                        <p>
+                            Obras como
+                            <strong>Dom Casmurro</strong>
+                            e
+                            <strong>Orgulho e Preconceito</strong>
+                            continuam entre as leituras favoritas
+                            de quem busca histórias marcantes
+                            e atemporais.
+                        </p>
+
+                    </div>
+
+
+                    <div class="featured-note reveal">
+
+                        <h3>
+                            Leituras técnicas em alta
+                        </h3>
+
+                        <p>
+                            Títulos de programação e desenvolvimento
+                            seguem em destaque entre estudantes
+                            e profissionais que desejam evoluir
+                            seus conhecimentos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Minha Biblioteca.
+            Todos os direitos reservados.
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* MENU MOBILE */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", () => {
+
+            navLinks.classList.toggle("menu-open");
+
+        });
+
+
+        /* ELEMENTOS DOS FILTROS */
+
+        const busca =
+            document.getElementById("busca");
+
+        const genero =
+            document.getElementById("genero");
+
+        const status =
+            document.getElementById("status");
+
+        const limpar =
+            document.getElementById("limparFiltros");
+
+        const livros =
+            document.querySelectorAll(".book-item");
+
+
+        /* FILTRO DOS LIVROS */
+
+        function filtrarLivros() {
+
+            const termo =
+                busca.value.toLowerCase().trim();
+
+            const generoSelecionado =
+                genero.value;
+
+            const statusSelecionado =
+                status.value;
+
+
+            livros.forEach((livro) => {
+
+                const titulo =
+                    livro.dataset.title.toLowerCase();
+
+                const autor =
+                    livro.dataset.author.toLowerCase();
+
+                const generoLivro =
+                    livro.dataset.genre;
+
+                const statusLivro =
+                    livro.dataset.status;
+
+
+                const correspondeBusca =
+                    titulo.includes(termo) ||
+                    autor.includes(termo);
+
+                const correspondeGenero =
+                    !generoSelecionado ||
+                    generoLivro === generoSelecionado;
+
+                const correspondeStatus =
+                    !statusSelecionado ||
+                    statusLivro === statusSelecionado;
+
+
+                if (
+                    correspondeBusca &&
+                    correspondeGenero &&
+                    correspondeStatus
+                ) {
+
+                    livro.style.display = "grid";
+
+                } else {
+
+                    livro.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* EVENTOS DOS FILTROS */
+
+        busca.addEventListener(
+            "input",
+            filtrarLivros
+        );
+
+        genero.addEventListener(
+            "change",
+            filtrarLivros
+        );
+
+        status.addEventListener(
+            "change",
+            filtrarLivros
+        );
+
+
+        /* LIMPAR FILTROS */
+
+        limpar.addEventListener("click", () => {
+
+            busca.value = "";
+
+            genero.value = "";
+
+            status.value = "";
+
+            filtrarLivros();
+
+        });
+
+
+        /* ANIMAÇÃO */
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.14
+                }
+            );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach((element, index) => {
+
+                element.style.transitionDelay =
+                    `${index * 70}ms`;
+
+                observer.observe(element);
+
+            });
+
+    </script>
+
 </body>
+
 </html>
